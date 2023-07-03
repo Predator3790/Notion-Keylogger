@@ -6,17 +6,17 @@ import requests
 from pynput import keyboard
 
 
-SECRET_TOKEN = "<YOUR INTEGRATION SECRET TOKEN HERE>"
-DATABASE_ID = "<YOUR DATABASE ID OR URL HERE>"
+API_TOKEN = "<YOUR SECRET API TOKEN HERE>"
+DATABASE_ID = "<YOUR DATABASE ID HERE>"
 
 
 class Notion_Database:
-    def __init__(self, secret_token, database_id) -> None:
+    def __init__(self, api_token, database_id) -> None:
         # Get database ID in case someone pastes complete URL
         database_id = re.search(r"\b[a-fA-F0-9]{32}\b", database_id).string
         self.id = database_id
         self.headers = {
-            "Authorization": f"Bearer {secret_token}",
+            "Authorization": f"Bearer {api_token}",
             "Content-Type": "application/json",
             "Notion-Version": "2021-08-16"
         }
@@ -109,8 +109,8 @@ class Notion_Database:
 
 
 class Notion_Klog:
-    def __init__(self, secret_token: str, database_id: str, report_every: int = 60) -> None:
-        self.db = Notion_Database(secret_token, database_id)
+    def __init__(self, api_token: str, database_id: str, report_every: int = 60) -> None:
+        self.db = Notion_Database(api_token, database_id)
         self.report_every = report_every
         self.log = ''
         self.last_log = ''
@@ -184,4 +184,4 @@ class Notion_Klog:
 
 
 if __name__ == '__main__':
-    Notion_Klog(SECRET_TOKEN, DATABASE_ID, 60).run()
+    Notion_Klog(API_TOKEN, DATABASE_ID).run()
